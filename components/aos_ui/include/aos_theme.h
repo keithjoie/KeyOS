@@ -13,20 +13,29 @@
 extern "C" {
 #endif
 
-/* Palette (taken from iOS's colour system in dark mode) */
+/* KeyOS Minimal Liquid Glass palette.
+ * Restrained cool surfaces keep the AMOLED interface readable and efficient. */
 #define AOS_C_BG        lv_color_hex(0x000000)
-#define AOS_C_CARD      lv_color_hex(0x1C1C1E)
-#define AOS_C_CARD2     lv_color_hex(0x2C2C2E)
+#define AOS_C_CARD      lv_color_hex(0x151922)
+#define AOS_C_CARD2     lv_color_hex(0x252B36)
 #define AOS_C_TEXT      lv_color_hex(0xFFFFFF)
-#define AOS_C_DIM       lv_color_hex(0x8E8E93)
-#define AOS_C_ACCENT    lv_color_hex(0x0A84FF)
-#define AOS_C_GREEN     lv_color_hex(0x30D158)
+#define AOS_C_DIM       lv_color_hex(0xA6ABB5)
+#define AOS_C_ACCENT    lv_color_hex(0x45B8FF)
+#define AOS_C_GREEN     lv_color_hex(0x69E6B1)
 #define AOS_C_RED       lv_color_hex(0xFF453A)
-#define AOS_C_ORANGE    lv_color_hex(0xFF9F0A)
-#define AOS_C_YELLOW    lv_color_hex(0xFFD60A)
-#define AOS_C_PURPLE    lv_color_hex(0xBF5AF2)
-#define AOS_C_PINK      lv_color_hex(0xFF375F)
-#define AOS_C_TEAL      lv_color_hex(0x40C8E0)
+#define AOS_C_ORANGE    lv_color_hex(0xFFBF69)
+#define AOS_C_YELLOW    lv_color_hex(0xF6D98B)
+#define AOS_C_PURPLE    lv_color_hex(0x9B83FF)
+#define AOS_C_PINK      lv_color_hex(0xE69ACB)
+#define AOS_C_TEAL      lv_color_hex(0x69D9E8)
+
+/* Semantic aliases for new KeyOS UI components. */
+#define KEYOS_C_GLASS       AOS_C_CARD
+#define KEYOS_C_GLASS_EDGE  AOS_C_CARD2
+#define KEYOS_C_BLUE        AOS_C_ACCENT
+#define KEYOS_C_VIOLET      AOS_C_PURPLE
+#define KEYOS_C_MINT        AOS_C_GREEN
+#define KEYOS_C_AMBER       AOS_C_ORANGE
 
 /* Typefaces resolved at run time from whatever is compiled in */
 extern const lv_font_t *aos_font_huge;   /* ~48 px, clocks             */
