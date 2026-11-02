@@ -30,7 +30,16 @@ static void *create(lv_obj_t *root)
     }
 
     face->date = aos_label(root, "", aos_font_body, AOS_C_ACCENT);
-    lv_obj_align(face->date, LV_ALIGN_TOP_MID, 0, 62);
+    /* A restrained glass chip: translucent fill, fine edge, no shadow. */
+    lv_obj_set_style_bg_color(face->date, AOS_C_CARD, 0);
+    lv_obj_set_style_bg_opa(face->date, LV_OPA_30, 0);
+    lv_obj_set_style_border_color(face->date, AOS_C_CARD2, 0);
+    lv_obj_set_style_border_opa(face->date, LV_OPA_60, 0);
+    lv_obj_set_style_border_width(face->date, 1, 0);
+    lv_obj_set_style_radius(face->date, 14, 0);
+    lv_obj_set_style_pad_hor(face->date, 14, 0);
+    lv_obj_set_style_pad_ver(face->date, 6, 0);
+    lv_obj_align(face->date, LV_ALIGN_TOP_MID, 0, 54);
 
     /* The largest compiled font is 48 px; we scale it so the time fills the
      * screen. Since it changes once a minute, the cost of rasterising the
@@ -39,7 +48,12 @@ static void *create(lv_obj_t *root)
     lv_obj_align(face->time, LV_ALIGN_CENTER, 0, -26);
 
     face->seconds = aos_label(root, "00", aos_font_body, AOS_C_DIM);
-    lv_obj_align(face->seconds, LV_ALIGN_CENTER, 0, 46);
+    lv_obj_set_style_bg_color(face->seconds, AOS_C_CARD, 0);
+    lv_obj_set_style_bg_opa(face->seconds, LV_OPA_30, 0);
+    lv_obj_set_style_radius(face->seconds, 10, 0);
+    lv_obj_set_style_pad_hor(face->seconds, 9, 0);
+    lv_obj_set_style_pad_ver(face->seconds, 2, 0);
+    lv_obj_align(face->seconds, LV_ALIGN_CENTER, 0, 48);
 
     face->extras = lv_obj_create(root);
     lv_obj_remove_style_all(face->extras);
@@ -55,7 +69,7 @@ static void *create(lv_obj_t *root)
     lv_obj_set_style_arc_width(face->batt_arc, 7, LV_PART_MAIN);
     lv_obj_set_style_arc_width(face->batt_arc, 7, LV_PART_INDICATOR);
     lv_obj_set_style_arc_color(face->batt_arc, AOS_C_CARD2, LV_PART_MAIN);
-    lv_obj_set_style_arc_color(face->batt_arc, AOS_C_TEAL, LV_PART_INDICATOR);
+    lv_obj_set_style_arc_color(face->batt_arc, AOS_C_ACCENT, LV_PART_INDICATOR);
     lv_obj_align(face->batt_arc, LV_ALIGN_BOTTOM_MID, -66, -54);
 
     face->batt_label = aos_label_boxed(face->extras, "--", aos_font_small,
@@ -132,7 +146,7 @@ static void refresh(void *ctx, const struct tm *now)
         lv_arc_set_value(face->batt_arc, batt.percent);
         lv_obj_set_style_arc_color(face->batt_arc,
                                    batt.charging      ? AOS_C_GREEN :
-                                   batt.percent <= 15 ? AOS_C_RED : AOS_C_TEAL,
+                                   batt.percent <= 15 ? AOS_C_RED : AOS_C_ACCENT,
                                    LV_PART_INDICATOR);
         snprintf(buf, sizeof(buf), "%d%%", batt.percent);
         lv_label_set_text(face->batt_label, buf);
