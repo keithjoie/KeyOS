@@ -102,6 +102,8 @@ static void set_aod(void *ctx, bool aod)
                                 aod ? lv_color_hex(0x9A9A9A) : AOS_C_TEXT, 0);
     lv_obj_set_style_text_color(face->date,
                                 aod ? lv_color_hex(0x4A5A6A) : AOS_C_ACCENT, 0);
+    /* Keep the always-on state almost entirely black. */
+    lv_obj_set_style_bg_opa(face->date, aod ? LV_OPA_TRANSP : LV_OPA_30, 0);
 
     if (aod) {
         lv_obj_add_flag(face->seconds, LV_OBJ_FLAG_HIDDEN);
